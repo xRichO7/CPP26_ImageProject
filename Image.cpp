@@ -12,6 +12,12 @@
  * @param filename: The name of the file to load
  * /
  */
+
+/*
+ References: Image flipping Logic - https://youtu.be/Yn_8KXuBXMc?si=WVMkFSwWcq_zyM-H
+ */
+
+
 MyImage::MyImage(string filename): fileName(filename) {
     this->load(filename);
 }
@@ -200,6 +206,9 @@ void MyImage::greyScale() {
 }
 
 void MyImage::flipHorizontal() {
+    int width = this ->size.x;
+    int height = this ->size.y;
+
     for (int y = 0; y < height; y++)
     {
         for (int x = 0; x < width / 2; x++)
@@ -212,13 +221,26 @@ void MyImage::flipHorizontal() {
     }
 }
 void MyImage::flipVertical() {
-    cout << "Flip Vertical" << endl;
+
+    int width = this ->size.x;
+    int height = this ->size.y;
+
+    for (int y = 0; y < height / 2; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            int top = y * width + x;
+            int bottom = (height - 1 - y) * width + x;
+
+            std::swap(pixels[top], pixels[bottom]);
+        }
+    }
 }
 void MyImage::advancedFeature1() {
     cout << "Advanced Feature 1" << endl;
 }
 void MyImage::advancedFeature2() {
-    cout << "Advanced FEature 2" << endl;
+    cout << "Advanced Feature 2" << endl;
 }
 void MyImage::advancedFeature3() {
     cout << "Advanced Feature 3" << endl;
