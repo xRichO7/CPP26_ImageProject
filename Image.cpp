@@ -242,31 +242,30 @@ void MyImage::advancedFeature1() {
     }
 }
 
-
 void MyImage::advancedFeature2() {
+    int w = size.x;
+    int h = size.y;
+    vector<RGB> tmp(w * h);
 
-    int width = this->size.x;
-    int height = this->size.y;
-
-    vector<RGB> rotated(width * height);
-
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-
-            int newX = height - 1 - y;
-            int newY = x;
-
-            rotated[newY * height + newX] = pixels[y * width + x];
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int nx = h - 1 - y;
+            int ny = x;
+            tmp[ny * h + nx] = pixels[y * w + x];
         }
     }
 
-    this->pixels = rotated;
-
-    this->size = {(float)height, (float)width};
-
-    cout << "Image now rotated" << endl;
+    pixels = tmp;
+    size = {(float)h, (float)w};
 }
+
 void MyImage::advancedFeature3() {
-    cout << "Advanced Feature 3" << endl;
+    for (int i = 0; i < pixels.size(); i++) {
+        pixels[i].r = 255 - pixels[i].r;
+        pixels[i].g = 255 - pixels[i].g;
+        pixels[i].b = 255 - pixels[i].b;
+    }
+
+
 }
 
