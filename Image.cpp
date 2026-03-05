@@ -253,6 +253,20 @@ void MyImage::flipVertical() {
 }
 
 void MyImage::advancedFeature2() {
+    int w = size.x;
+    int h = size.y;
+    vector<RGB> tmp(w * h);
+
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int nx = h - 1 - y;
+            int ny = x;
+            tmp[ny * h + nx] = pixels[y * w + x];
+        }
+    }
+
+    pixels = tmp;
+    size = {(float)h, (float)w};
 
     int width = this->size.x;
     int height = this->size.y;
@@ -275,7 +289,12 @@ void MyImage::advancedFeature2() {
 
     cout << "Image now rotated" << endl;
 }
+
 void MyImage::advancedFeature3() {
-    cout << "Advanced Feature 3" << endl;
+    for (int i = 0; i < pixels.size(); i++) {
+        pixels[i].r = 255 - pixels[i].r;
+        pixels[i].g = 255 - pixels[i].g;
+        pixels[i].b = 255 - pixels[i].b;
+    }
 }
 
