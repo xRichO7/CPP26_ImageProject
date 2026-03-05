@@ -32,6 +32,8 @@ public:
     void  setTargetSize(sf::Vector2f target);
     void setPosition(sf::Vector2f pos){this->position = pos;}
     sf::Vector2f getSize();
+    int width;
+    int height;
     void save();
     friend ostream& operator<<(ostream &os, MyImage &img) {
         return os << img.fileName << " " << img.size.x <<" " << img.size.y<<endl;;
