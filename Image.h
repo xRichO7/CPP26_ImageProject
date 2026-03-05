@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 #ifndef IMAGEPROJECT_IMAGE_H
 #define IMAGEPROJECT_IMAGE_H
 struct RGB {
@@ -24,6 +22,7 @@ class MyImage : public sf::Drawable
     const int LANDSCAPE = 2;
     sf::Vector2f position;
     string fileName ;
+
 
     void load(string filename);
 public:

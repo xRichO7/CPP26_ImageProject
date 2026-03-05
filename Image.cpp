@@ -236,11 +236,44 @@ void MyImage::flipVertical() {
         }
     }
 }
-void MyImage::advancedFeature1() {
-    cout << "Advanced Feature 1" << endl;
+    void MyImage::advancedFeature1(){
+    int width = this-> size.x;
+    int height = this->size.y;
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width/ 2; x++) {
+            int leftIndex = y * width + x;
+            int rightIndex = y * width + (width - 1 - x);
+
+            pixels[rightIndex] = pixels[leftIndex];
+        }
+    }
+    std::cout << "Mirror image applied" << std::endl;
+
 }
+
 void MyImage::advancedFeature2() {
-    cout << "Advanced Feature 2" << endl;
+
+    int width = this->size.x;
+    int height = this->size.y;
+
+    vector<RGB> rotated(width * height);
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+
+            int newX = height - 1 - y;
+            int newY = x;
+
+            rotated[newY * height + newX] = pixels[y * width + x];
+        }
+    }
+
+    this->pixels = rotated;
+
+    this->size = {(float)height, (float)width};
+
+    cout << "Image now rotated" << endl;
 }
 void MyImage::advancedFeature3() {
     cout << "Advanced Feature 3" << endl;
