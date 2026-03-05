@@ -9,7 +9,7 @@ using namespace std;
 #define IMAGEPROJECT_IMAGE_H
 struct RGB {
     char r, g, b;
-    RGB(char r, char g, char b):r(r), g(g), b(b){}
+    RGB(  char r, char g, char b):r(r), g(g), b(b){}
     RGB():r(0),g(0),b(0){}
 };
 
@@ -44,6 +44,7 @@ public:
     void advancedFeature1();
     void advancedFeature2();
     void advancedFeature3();
+    void advancedFeature4(int amount);
     void reload();
     void filterRed();
     void filterGreen();

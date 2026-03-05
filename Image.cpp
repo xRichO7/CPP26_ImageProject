@@ -14,7 +14,10 @@
  */
 
 /*
- References: Image flipping Logic - https://youtu.be/Yn_8KXuBXMc?si=WVMkFSwWcq_zyM-H
+ Github Link: https://github.com/xRichO7/CPP26_ImageProject
+ References:
+ Image flipping Logic - https://youtu.be/Yn_8KXuBXMc?si=WVMkFSwWcq_zyM-H
+ Mirror Image Logic - https://stackoverflow.com/questions/2647376/correct-flip-mirror-of-pixels-of-an-image
  */
 
 
@@ -69,6 +72,7 @@ void MyImage::draw(sf::RenderTarget &target, sf::RenderStates states)const {
             x = (int)xStep;
             y = (int)yStep;
             int pix = (y*this->size.x) + x;
+
             sf::VertexArray circle(sf::PrimitiveType::Points, 1);
             circle[0].color = sf::Color(this->pixels[pix].r,this->pixels[pix].g,this->pixels[pix].b);
             circle[0].position = {j+startX,i+startY};
@@ -241,6 +245,7 @@ void MyImage::flipVertical() {
     int height = this->size.y;
 
     for (int y = 0; y < height; y++) {
+
         for (int x = 0; x < width/ 2; x++) {
             int leftIndex = y * width + x;
             int rightIndex = y * width + (width - 1 - x);
@@ -296,5 +301,19 @@ void MyImage::advancedFeature3() {
         pixels[i].g = 255 - pixels[i].g;
         pixels[i].b = 255 - pixels[i].b;
     }
+}
+
+void MyImage::advancedFeature4(int amount) {
+for (int i = 0; i < pixels.size(); i++) {
+    int r = pixels[i].r + amount;
+    int g = pixels[i].g + amount;
+    int b = pixels [i].b + amount;
+
+    pixels[i].r = (r > 255) ? 255 : (r < 0 ? 0 : r);
+    pixels[i].g = (g > 255) ? 255 : (g < 0 ? 0 : g);
+    pixels[i].b = (b > 255) ? 255 : (b < 0 ? 0 : b);
+}
+    std ::cout << "Brightness adjusted by " << amount << std::endl;
+
 }
 
