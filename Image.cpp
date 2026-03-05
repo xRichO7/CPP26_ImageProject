@@ -258,21 +258,7 @@ void MyImage::flipVertical() {
 }
 
 void MyImage::advancedFeature2() {
-    int w = size.x;
-    int h = size.y;
-    vector<RGB> tmp(w * h);
-
-    for (int y = 0; y < h; y++) {
-        for (int x = 0; x < w; x++) {
-            int nx = h - 1 - y;
-            int ny = x;
-            tmp[ny * h + nx] = pixels[y * w + x];
-        }
-    }
-
-    pixels = tmp;
-    size = {(float)h, (float)w};
-
+   
     int width = this->size.x;
     int height = this->size.y;
 
@@ -316,4 +302,3 @@ for (int i = 0; i < pixels.size(); i++) {
     std ::cout << "Brightness adjusted by " << amount << std::endl;
 
 }
-
